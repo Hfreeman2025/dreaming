@@ -1,8 +1,11 @@
 // Turn an asciinema v2 cast into terminal screens (with a headless terminal
 // emulator, so cursor moves, the alternate screen and colours are exact) and
 // the screens into SVG: one still per marker, and one animated SVG of the
-// whole cast that plays with CSS alone.
+// whole cast that plays with CSS alone. The text is set in IBM Plex Mono,
+// embedded in each SVG: an SVG shown as an <img> (as the README shows these)
+// may not fetch anything, so a font it links to would never load.
 import xterm from "@xterm/headless";
+import { readFileSync } from "node:fs";
 
 const { Terminal } = xterm;
 
@@ -29,10 +32,26 @@ export const THEME = {
   ],
 };
 const FONT = 14;
-const CELL = 8.43; // advance of a 14px monospace glyph
+const CELL = 8.4; // IBM Plex Mono's advance is 0.6 em
 const LINE = 19;
 const PAD = 18;
-const FONT_STACK = "'SF Mono', Menlo, Monaco, Consolas, 'DejaVu Sans Mono', 'Liberation Mono', monospace";
+// Plex Mono's latin file has no checks, arrows, box-drawing or geometric shapes
+// (✓ ✗ → ─ ━ ● ▲ ≠ …); those come from the next face on the stack, and every
+// run's width is locked to the grid, so a fallback glyph cannot move its row.
+const FONT_STACK = "'IBM Plex Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace";
+const BOLD = 600;
+
+/** The @font-face rules for the weights a drawing uses, with the files inlined as data URIs. */
+function fontFaces(bold) {
+  const face = (weight, file) => {
+    const data = readFileSync(new URL(`../../fonts/${file}`, import.meta.url)).toString("base64");
+    return `@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:${weight};font-display:swap;src:url(data:font/woff2;base64,${data}) format("woff2")}`;
+  };
+  return [
+    face(400, "ibm-plex-mono-latin-400-normal.woff2"),
+    ...(bold ? [face("600 700", "ibm-plex-mono-latin-600-normal.woff2")] : []),
+  ].join("");
+}
 
 function palette256(index) {
   if (index < 16) return THEME.ansi[index];
@@ -116,7 +135,7 @@ function rowSvg(cells) {
     if (run && run.text.trim() !== "") {
       const attrs = [`x="${(PAD + run.x * CELL).toFixed(2)}"`, `textLength="${(run.width * CELL).toFixed(2)}"`];
       if (run.fg) attrs.push(`fill="${run.fg}"`);
-      if (run.bold) attrs.push(`font-weight="700"`);
+      if (run.bold) attrs.push(`font-weight="${BOLD}"`);
       if (run.dim) attrs.push(`opacity="0.55"`);
       parts.push(`<text ${attrs.join(" ")}>${xml(run.text)}</text>`);
     }
@@ -157,6 +176,7 @@ function frameSize(header) {
 // No fill here: a CSS rule would override every text run's own fill attribute.
 // The default colour is inherited from a wrapping group instead.
 const STYLE = `text{font-family:${FONT_STACK};font-size:${FONT}px;white-space:pre}`;
+const usesBold = (body) => body.includes(`font-weight="${BOLD}"`);
 
 /** A still image of one screen. */
 export function screenSvg(header, screen, title) {
@@ -167,7 +187,7 @@ export function screenSvg(header, screen, title) {
       return body === "" ? "" : `<g transform="translate(0 ${PAD + (y + 1) * LINE - 5})">${body}</g>`;
     })
     .join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${xml(title)}"><title>${xml(title)}</title><style>${STYLE}</style><rect width="100%" height="100%" rx="8" fill="${THEME.background}"/><g fill="${THEME.foreground}">${rows}</g></svg>\n`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${xml(title)}"><title>${xml(title)}</title><style>${fontFaces(usesBold(rows))}${STYLE}</style><rect width="100%" height="100%" rx="8" fill="${THEME.background}"/><g fill="${THEME.foreground}">${rows}</g></svg>\n`;
 }
 
 /**
@@ -230,7 +250,7 @@ export function animatedSvg(header, frames, { title, minFrameMs = 40, holdLastMs
     return `<g id="f${name}" class="fr">${uses.join("")}</g>`;
   });
   const last = `#f${(kept.length - 1).toString(36)}`;
-  const css = `${STYLE}.fr{visibility:hidden;animation:${(total / 1000).toFixed(2)}s step-end infinite}${rules.join("")}@media (prefers-reduced-motion:reduce){.fr{animation:none}${last}{visibility:visible}}`;
+  const css = `${fontFaces(defs.some(usesBold))}${STYLE}.fr{visibility:hidden;animation:${(total / 1000).toFixed(2)}s step-end infinite}${rules.join("")}@media (prefers-reduced-motion:reduce){.fr{animation:none}${last}{visibility:visible}}`;
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${xml(title)}"><title>${xml(title)}</title><style>${css}</style><defs>${defs.join("")}<clipPath id="view"><rect width="${width}" height="${height}" rx="8"/></clipPath></defs><rect width="100%" height="100%" rx="8" fill="${THEME.background}"/><g clip-path="url(#view)" fill="${THEME.foreground}"><g id="film">${film.join("")}</g></g></svg>\n`;
   return { svg, frames: kept.length, durationMs: total, uniqueRows: rowIds.size };
 }

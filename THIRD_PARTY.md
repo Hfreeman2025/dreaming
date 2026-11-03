@@ -38,6 +38,23 @@ Their own dependencies are all MIT, Apache-2.0, BSD-3-Clause or ISC: `onnxruntim
 
 The rest of the development tree (TypeScript, ESLint, Prettier, Vitest and their dependencies) is MIT, ISC, BSD or Apache-2.0, except `minimatch` and one of its dependencies (BlueOak-1.0.0, a permissive licence), which only ESLint uses.
 
+## Fonts (in the repository, under `fonts/`)
+
+IBM Plex, version 5.3.0 of the `@fontsource` packages, latin subset, WOFF2, unmodified. Licence: SIL Open Font License 1.1, Copyright 2019 IBM Corp.; the full text is in `fonts/OFL.txt`. Fetched from `https://cdn.jsdelivr.net/npm/@fontsource/<package>@5.3.0/files/<file>`; nothing is fetched at runtime, and `fonts/plex.css` declares every face with `font-display: swap`.
+
+| Package                               | File                                             | Bytes  | Used here                                         |
+| ------------------------------------- | ------------------------------------------------ | ------ | ------------------------------------------------- |
+| `@fontsource/ibm-plex-mono`           | `ibm-plex-mono-latin-400-normal.woff2`           | 14,708 | every recording, embedded in each SVG             |
+| `@fontsource/ibm-plex-mono`           | `ibm-plex-mono-latin-600-normal.woff2`           | 15,620 | bold in the recordings, embedded where it is used |
+| `@fontsource/ibm-plex-sans-condensed` | `ibm-plex-sans-condensed-latin-600-normal.woff2` | 19,816 | the name on the social card (preloaded)           |
+| `@fontsource/ibm-plex-sans`           | `ibm-plex-sans-latin-400-normal.woff2`           | 22,588 | the sentence on the social card (preloaded)       |
+| `@fontsource/ibm-plex-sans-condensed` | `ibm-plex-sans-condensed-latin-500-normal.woff2` | 19,952 | not yet; kept so the family is complete           |
+| `@fontsource/ibm-plex-sans`           | `ibm-plex-sans-latin-400-italic.woff2`           | 24,356 | not yet                                           |
+| `@fontsource/ibm-plex-sans`           | `ibm-plex-sans-latin-500-normal.woff2`           | 24,184 | not yet                                           |
+| `@fontsource/ibm-plex-sans`           | `ibm-plex-sans-latin-600-normal.woff2`           | 24,252 | not yet                                           |
+
+The latin subset maps 229 code points. The recordings use 15 characters it lacks (✓ ✗ ○ ● ▶ ▲ ▼ ■ ≠ → ← ─ ━ ┃ ┼), which come from the system monospace.
+
 ## Services
 
 `dreaming eval` runs the `claude` CLI you already have, under your own login, on synthetic task suites; dreaming itself calls no hosted model API and needs no key.
