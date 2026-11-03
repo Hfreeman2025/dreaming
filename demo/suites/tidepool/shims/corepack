@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+// corepack in the eval sandbox: recorded, and unavailable (there is no registry to fetch from).
+import { offline, record } from "./_common.mjs";
+
+record("corepack", process.argv.slice(2));
+offline("corepack", process.argv.slice(2));

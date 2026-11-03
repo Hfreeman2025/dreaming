@@ -1,0 +1,36 @@
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Local state, logs and secrets
+.env
+.env.*
+!.env.example
+*.log
+.dreaming/
+*.pem
+*.key
+*.p12
+keys/
+
+# Model weights: the NLI model is downloaded on demand, never committed
+models/
+*.onnx
+*.safetensors
+
+# Tool caches
+.cache/
+.vite/
+.eslintcache
+
+# Editor and OS noise
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Playwright output
+test-results/
+playwright-report/

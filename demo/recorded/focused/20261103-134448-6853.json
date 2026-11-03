@@ -1,0 +1,1166 @@
+{
+  "schemaVersion": 1,
+  "evalId": "20261103-134448-6853",
+  "createdAt": "2026-11-03T13:44:48.660Z",
+  "finishedAt": "2026-11-03T13:55:57.137Z",
+  "ended": "completed",
+  "endedBecause": null,
+  "proposal": {
+    "runId": "20261102-165936-a9e4",
+    "id": "20261102-165936-a9e4-1",
+    "action": "add",
+    "file": "prefer-pnpm.md",
+    "description": "Use pnpm, never npm, in the tidepool repo"
+  },
+  "memoryDir": "<tmp>/memory",
+  "suite": {
+    "name": "tidepool",
+    "about": "Three everyday tasks in tidepool, a synthetic pnpm workspace whose README still says npm. The repository, tasks and checks were written for this demo; the agent never sees the checks.",
+    "tasks": [
+      {
+        "id": "install-and-test",
+        "prompt": "Install the tidepool workspace's dependencies, then run the api package's tests and tell me whether they pass.",
+        "passMeans": "installed with pnpm, never ran npm install, and the api tests pass"
+      }
+    ]
+  },
+  "plan": {
+    "runs": 30,
+    "reps": 15,
+    "seed": 5,
+    "parallel": 3
+  },
+  "agent": {
+    "bin": "claude",
+    "version": "2.1.281 (Claude Code)",
+    "model": "sonnet",
+    "argv": [
+      "-p",
+      "--output-format",
+      "stream-json",
+      "--verbose",
+      "--include-hook-events",
+      "--safe-mode",
+      "--setting-sources",
+      "project",
+      "--settings",
+      "<slot>/settings.json",
+      "--strict-mcp-config",
+      "--no-session-persistence",
+      "--tools",
+      "Bash,Read,Edit,Write,Glob,Grep",
+      "--allowedTools",
+      "Bash,Read,Edit,Write,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--max-turns",
+      "20",
+      "--debug-file",
+      "<slot>/debug.log",
+      "--model",
+      "sonnet",
+      "--append-system-prompt-file",
+      "<slot>/memory.md"
+    ]
+  },
+  "isolation": {
+    "control": {
+      "ok": true,
+      "hookEvents": 4,
+      "canaries": [
+        "SessionEnd",
+        "SessionStart",
+        "UserPromptSubmit"
+      ],
+      "detail": "canary fired on SessionEnd, SessionStart, UserPromptSubmit; 4 hook events reported"
+    },
+    "workDir": "<tmp>/dreaming-eval-h2pZD2",
+    "bashrc": false,
+    "audit": {
+      "samples": 3259,
+      "seen": [
+        "(bash)",
+        "(cat)",
+        "(claude.exe)",
+        "(env)",
+        "(git)",
+        "(grep)",
+        "(head)",
+        "(ioreg)",
+        "(ls)",
+        "(node)",
+        "(path_helper)",
+        "(ps)",
+        "(security)",
+        "(sh)",
+        "(tail)",
+        "(uname)",
+        "<defunct>",
+        "bash",
+        "claude",
+        "env",
+        "git",
+        "node",
+        "rg",
+        "tail"
+      ],
+      "soundPlayers": []
+    }
+  },
+  "runs": [
+    {
+      "index": 0,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 13,
+      "startedMs": 6656,
+      "wallMs": 103800,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 10,
+        "durationMs": 96397,
+        "costUsd": 0.077282,
+        "usage": {
+          "input": 18,
+          "cacheCreation": 7049,
+          "cacheRead": 141050,
+          "output": 2084
+        },
+        "toolCalls": {
+          "Bash": 7,
+          "Read": 2
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 3
+      }
+    },
+    {
+      "index": 1,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 3,
+      "startedMs": 6656,
+      "wallMs": 89739,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 81548,
+        "costUsd": 0.043669200000000005,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 4724,
+          "cacheRead": 87096,
+          "output": 733
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 2,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 8,
+      "startedMs": 6656,
+      "wallMs": 129071,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 10,
+        "durationMs": 121337,
+        "costUsd": 0.09787040000000001,
+        "usage": {
+          "input": 20,
+          "cacheCreation": 7864,
+          "cacheRead": 159522,
+          "output": 3447
+        },
+        "toolCalls": {
+          "Bash": 9
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 4
+      }
+    },
+    {
+      "index": 3,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 5,
+      "startedMs": 96516,
+      "wallMs": 112168,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 9,
+        "durationMs": 107425,
+        "costUsd": 0.060837999999999996,
+        "usage": {
+          "input": 18,
+          "cacheCreation": 3944,
+          "cacheRead": 136180,
+          "output": 1779
+        },
+        "toolCalls": {
+          "Bash": 8
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 3
+      }
+    },
+    {
+      "index": 4,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 8,
+      "startedMs": 110498,
+      "wallMs": 41349,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 7,
+        "durationMs": 37510,
+        "costUsd": 0.043837,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 2872,
+          "cacheRead": 104905,
+          "output": 1134
+        },
+        "toolCalls": {
+          "Bash": 6
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 5,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 13,
+      "startedMs": 135843,
+      "wallMs": 45206,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 38978,
+        "costUsd": 0.0274286,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 1122,
+          "cacheRead": 87533,
+          "output": 541
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 6,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 1,
+      "startedMs": 151959,
+      "wallMs": 77674,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 73819,
+        "costUsd": 0.0416986,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 3439,
+          "cacheRead": 92243,
+          "output": 947
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 7,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 12,
+      "startedMs": 181154,
+      "wallMs": 71680,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 7,
+        "durationMs": 67842,
+        "costUsd": 0.038559600000000006,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 1950,
+          "cacheRead": 104508,
+          "output": 983
+        },
+        "toolCalls": {
+          "Bash": 6
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 3
+      }
+    },
+    {
+      "index": 8,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 11,
+      "startedMs": 208727,
+      "wallMs": 46619,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 42782,
+        "costUsd": 0.029600600000000005,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 1279,
+          "cacheRead": 88103,
+          "output": 684
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 9,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 10,
+      "startedMs": 230525,
+      "wallMs": 57830,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 48611,
+        "costUsd": 0.037272,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 2567,
+          "cacheRead": 88150,
+          "output": 935
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 10,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 6,
+      "startedMs": 252939,
+      "wallMs": 67686,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 62515,
+        "costUsd": 0.0370692,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 2721,
+          "cacheRead": 92756,
+          "output": 761
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 11,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 9,
+      "startedMs": 255462,
+      "wallMs": 67471,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 7,
+        "durationMs": 60205,
+        "costUsd": 0.0410806,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 2597,
+          "cacheRead": 106473,
+          "output": 937
+        },
+        "toolCalls": {
+          "Bash": 6
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 3
+      }
+    },
+    {
+      "index": 12,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 3,
+      "startedMs": 288481,
+      "wallMs": 133757,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 7,
+        "durationMs": 128367,
+        "costUsd": 0.0374744,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 1717,
+          "cacheRead": 102292,
+          "output": 1012
+        },
+        "toolCalls": {
+          "Bash": 6
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 3
+      }
+    },
+    {
+      "index": 13,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 12,
+      "startedMs": 320748,
+      "wallMs": 69671,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 7,
+        "durationMs": 64950,
+        "costUsd": 0.04554659999999999,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 3972,
+          "cacheRead": 106803,
+          "output": 827
+        },
+        "toolCalls": {
+          "Bash": 6
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 14,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 14,
+      "startedMs": 323087,
+      "wallMs": 101500,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 97787,
+        "costUsd": 0.0384692,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 2758,
+          "cacheRead": 91966,
+          "output": 902
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 15,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 7,
+      "startedMs": 390526,
+      "wallMs": 58523,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 8,
+        "durationMs": 50417,
+        "costUsd": 0.052005,
+        "usage": {
+          "input": 16,
+          "cacheCreation": 3354,
+          "cacheRead": 122485,
+          "output": 1406
+        },
+        "toolCalls": {
+          "Bash": 7
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 3
+      }
+    },
+    {
+      "index": 16,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 0,
+      "startedMs": 422389,
+      "wallMs": 56468,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 8,
+        "durationMs": 54136,
+        "costUsd": 0.05116880000000001,
+        "usage": {
+          "input": 16,
+          "cacheCreation": 3154,
+          "cacheRead": 122354,
+          "output": 1405
+        },
+        "toolCalls": {
+          "Bash": 7
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 4
+      }
+    },
+    {
+      "index": 17,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 11,
+      "startedMs": 424741,
+      "wallMs": 60923,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 9,
+        "durationMs": 57576,
+        "costUsd": 0.0472738,
+        "usage": {
+          "input": 16,
+          "cacheCreation": 2728,
+          "cacheRead": 122199,
+          "output": 1189
+        },
+        "toolCalls": {
+          "Bash": 7,
+          "Read": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 4
+      }
+    },
+    {
+      "index": 18,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 9,
+      "startedMs": 449105,
+      "wallMs": 60236,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 56023,
+        "costUsd": 0.031093600000000002,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 1377,
+          "cacheRead": 88008,
+          "output": 796
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 19,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 0,
+      "startedMs": 478902,
+      "wallMs": 26548,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 8,
+        "durationMs": 23439,
+        "costUsd": 0.0409024,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 2670,
+          "cacheRead": 92092,
+          "output": 1178
+        },
+        "toolCalls": {
+          "Bash": 5,
+          "Read": 2
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 20,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 4,
+      "startedMs": 485728,
+      "wallMs": 50228,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 10,
+        "durationMs": 46416,
+        "costUsd": 0.0652176,
+        "usage": {
+          "input": 20,
+          "cacheCreation": 4242,
+          "cacheRead": 161698,
+          "output": 1587
+        },
+        "toolCalls": {
+          "Bash": 9
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 6,
+        "shimCalls": 5
+      }
+    },
+    {
+      "index": 21,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 4,
+      "startedMs": 505559,
+      "wallMs": 28768,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 26321,
+        "costUsd": 0.032571800000000005,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 1777,
+          "cacheRead": 89899,
+          "output": 746
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 22,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 10,
+      "startedMs": 509442,
+      "wallMs": 62519,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 10,
+        "durationMs": 56997,
+        "costUsd": 0.06142820000000001,
+        "usage": {
+          "input": 18,
+          "cacheCreation": 3964,
+          "cacheRead": 143431,
+          "output": 1685
+        },
+        "toolCalls": {
+          "Bash": 8,
+          "Read": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 4
+      }
+    },
+    {
+      "index": 23,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 2,
+      "startedMs": 534432,
+      "wallMs": 44599,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 41709,
+        "costUsd": 0.03433560000000001,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 1907,
+          "cacheRead": 88868,
+          "output": 891
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 24,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 14,
+      "startedMs": 535992,
+      "wallMs": 60027,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 8,
+        "durationMs": 50043,
+        "costUsd": 0.05069440000000001,
+        "usage": {
+          "input": 16,
+          "cacheCreation": 3909,
+          "cacheRead": 125982,
+          "output": 983
+        },
+        "toolCalls": {
+          "Bash": 7
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 4
+      }
+    },
+    {
+      "index": 25,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 2,
+      "startedMs": 572007,
+      "wallMs": 58357,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 7,
+        "durationMs": 54518,
+        "costUsd": 0.035110600000000006,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 1599,
+          "cacheRead": 102183,
+          "output": 825
+        },
+        "toolCalls": {
+          "Bash": 6
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 3
+      }
+    },
+    {
+      "index": 26,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 1,
+      "startedMs": 579138,
+      "wallMs": 47533,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 35753,
+        "costUsd": 0.034197000000000005,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 2166,
+          "cacheRead": 91095,
+          "output": 729
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 27,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 6,
+      "startedMs": 596062,
+      "wallMs": 51093,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 7,
+        "durationMs": 47245,
+        "costUsd": 0.0437036,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 3095,
+          "cacheRead": 107228,
+          "output": 985
+        },
+        "toolCalls": {
+          "Bash": 6
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 3
+      }
+    },
+    {
+      "index": 28,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 7,
+      "startedMs": 626778,
+      "wallMs": 32143,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 28806,
+        "costUsd": 0.0346026,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 1919,
+          "cacheRead": 88863,
+          "output": 913
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 2,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 29,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 5,
+      "startedMs": 630406,
+      "wallMs": 37974,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 30681,
+        "costUsd": 0.034379,
+        "usage": {
+          "input": 12,
+          "cacheCreation": 1838,
+          "cacheRead": 88865,
+          "output": 923
+        },
+        "toolCalls": {
+          "Bash": 5
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 2
+      }
+    }
+  ]
+}

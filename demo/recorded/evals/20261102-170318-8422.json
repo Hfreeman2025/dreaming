@@ -1,0 +1,1180 @@
+{
+  "schemaVersion": 1,
+  "evalId": "20261102-170318-8422",
+  "createdAt": "2026-11-02T17:03:18.073Z",
+  "finishedAt": "2026-11-02T17:09:28.757Z",
+  "ended": "completed",
+  "endedBecause": null,
+  "proposal": {
+    "runId": "20261102-165936-a9e4",
+    "id": "20261102-165936-a9e4-5",
+    "action": "add",
+    "file": "prefers-tabs.md",
+    "description": "Sam prefers tabs over spaces"
+  },
+  "memoryDir": "<tmp>/memory",
+  "suite": {
+    "name": "tidepool",
+    "about": "Three everyday tasks in tidepool, a synthetic pnpm workspace whose README still says npm. The repository, tasks and checks were written for this demo; the agent never sees the checks.",
+    "tasks": [
+      {
+        "id": "install-and-test",
+        "prompt": "Install the tidepool workspace's dependencies, then run the api package's tests and tell me whether they pass.",
+        "passMeans": "installed with pnpm, never ran npm install, and the api tests pass"
+      },
+      {
+        "id": "deploy-day",
+        "prompt": "We'd like to ship the tides CSV export to production this Thursday. Does our deploy schedule allow that? Answer YES or NO on the first line, then one sentence explaining why.",
+        "passMeans": "answers YES: deploys moved to Tuesdays and Thursdays"
+      },
+      {
+        "id": "high-tide",
+        "prompt": "Add a new module packages/api/src/high-tide.js that exports isHighTide(level), true when the tide level in metres is above 2.5, and re-export it from packages/api/src/index.js.",
+        "passMeans": "isHighTide is right and re-exported, and the repository's lint (two-space indentation) passes"
+      }
+    ]
+  },
+  "plan": {
+    "runs": 30,
+    "reps": 5,
+    "seed": 2,
+    "parallel": 3
+  },
+  "agent": {
+    "bin": "claude",
+    "version": "2.1.281 (Claude Code)",
+    "model": "sonnet",
+    "argv": [
+      "-p",
+      "--output-format",
+      "stream-json",
+      "--verbose",
+      "--include-hook-events",
+      "--safe-mode",
+      "--setting-sources",
+      "project",
+      "--settings",
+      "<slot>/settings.json",
+      "--strict-mcp-config",
+      "--no-session-persistence",
+      "--tools",
+      "Bash,Read,Edit,Write,Glob,Grep",
+      "--allowedTools",
+      "Bash,Read,Edit,Write,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--max-turns",
+      "20",
+      "--debug-file",
+      "<slot>/debug.log",
+      "--model",
+      "sonnet",
+      "--append-system-prompt-file",
+      "<slot>/memory.md"
+    ]
+  },
+  "isolation": {
+    "control": {
+      "ok": true,
+      "hookEvents": 4,
+      "canaries": [
+        "SessionEnd",
+        "SessionStart",
+        "UserPromptSubmit"
+      ],
+      "detail": "canary fired on SessionEnd, SessionStart, UserPromptSubmit; 4 hook events reported"
+    },
+    "workDir": "<tmp>/dreaming-eval-JXKdoh",
+    "bashrc": false,
+    "audit": {
+      "samples": 1751,
+      "seen": [
+        "(bash)",
+        "(cat)",
+        "(claude.exe)",
+        "(env)",
+        "(git)",
+        "(ioreg)",
+        "(ls)",
+        "(node)",
+        "(path_helper)",
+        "(security)",
+        "(tail)",
+        "(uname)",
+        "<defunct>",
+        "bash",
+        "claude",
+        "env",
+        "git",
+        "node",
+        "rg",
+        "tail"
+      ],
+      "soundPlayers": []
+    }
+  },
+  "runs": [
+    {
+      "index": 0,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 0,
+      "startedMs": 16797,
+      "wallMs": 48525,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 10,
+        "durationMs": 38966,
+        "costUsd": 0.0612214,
+        "usage": {
+          "input": 16,
+          "cacheCreation": 4742,
+          "cacheRead": 126157,
+          "output": 1699
+        },
+        "toolCalls": {
+          "Bash": 7,
+          "Read": 2
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 4
+      }
+    },
+    {
+      "index": 1,
+      "arm": "with",
+      "task": "deploy-day",
+      "rep": 1,
+      "startedMs": 16797,
+      "wallMs": 19908,
+      "outcome": "fail",
+      "reason": "answered NO: it still thinks deploys are Tuesdays only",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 1,
+        "durationMs": 4874,
+        "costUsd": 0.0062472,
+        "usage": {
+          "input": 2,
+          "cacheCreation": 803,
+          "cacheRead": 13406,
+          "output": 35
+        },
+        "toolCalls": {}
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 2,
+      "arm": "with",
+      "task": "deploy-day",
+      "rep": 3,
+      "startedMs": 16797,
+      "wallMs": 18438,
+      "outcome": "fail",
+      "reason": "answered NO: it still thinks deploys are Tuesdays only",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 1,
+        "durationMs": 5191,
+        "costUsd": 0.0062071999999999995,
+        "usage": {
+          "input": 2,
+          "cacheCreation": 803,
+          "cacheRead": 13406,
+          "output": 31
+        },
+        "toolCalls": {}
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 3,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 1,
+      "startedMs": 35308,
+      "wallMs": 41456,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 8,
+        "durationMs": 29357,
+        "costUsd": 0.0504018,
+        "usage": {
+          "input": 16,
+          "cacheCreation": 3346,
+          "cacheRead": 119879,
+          "output": 1301
+        },
+        "toolCalls": {
+          "Bash": 7
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 4
+      }
+    },
+    {
+      "index": 4,
+      "arm": "without",
+      "task": "deploy-day",
+      "rep": 2,
+      "startedMs": 36811,
+      "wallMs": 4623,
+      "outcome": "fail",
+      "reason": "answered NO: it still thinks deploys are Tuesdays only",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 1,
+        "durationMs": 2489,
+        "costUsd": 0.0062296,
+        "usage": {
+          "input": 2,
+          "cacheCreation": 803,
+          "cacheRead": 13268,
+          "output": 36
+        },
+        "toolCalls": {}
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 5,
+      "arm": "with",
+      "task": "high-tide",
+      "rep": 0,
+      "startedMs": 41491,
+      "wallMs": 21536,
+      "outcome": "fail",
+      "reason": "lint fails: packages/api/src/high-tide.js:2: indent with spaces, not tabs",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 17698,
+        "costUsd": 0.0318436,
+        "usage": {
+          "input": 10,
+          "cacheCreation": 2219,
+          "cacheRead": 72238,
+          "output": 850
+        },
+        "toolCalls": {
+          "Bash": 1,
+          "Read": 2,
+          "Write": 1,
+          "Edit": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 6,
+      "arm": "without",
+      "task": "high-tide",
+      "rep": 1,
+      "startedMs": 63124,
+      "wallMs": 40854,
+      "outcome": "pass",
+      "reason": "isHighTide works and lint passes",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 39033,
+        "costUsd": 0.027288,
+        "usage": {
+          "input": 8,
+          "cacheCreation": 2123,
+          "cacheRead": 56300,
+          "output": 752
+        },
+        "toolCalls": {
+          "Bash": 1,
+          "Read": 2,
+          "Write": 1,
+          "Edit": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 7,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 1,
+      "startedMs": 65374,
+      "wallMs": 44548,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 7,
+        "durationMs": 41428,
+        "costUsd": 0.046529400000000005,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 3692,
+          "cacheRead": 105167,
+          "output": 1070
+        },
+        "toolCalls": {
+          "Bash": 6
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 8,
+      "arm": "without",
+      "task": "deploy-day",
+      "rep": 0,
+      "startedMs": 76820,
+      "wallMs": 44781,
+      "outcome": "fail",
+      "reason": "answered NO: it still thinks deploys are Tuesdays only",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 1,
+        "durationMs": 14319,
+        "costUsd": 0.0061896,
+        "usage": {
+          "input": 2,
+          "cacheCreation": 803,
+          "cacheRead": 13268,
+          "output": 32
+        },
+        "toolCalls": {}
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 9,
+      "arm": "without",
+      "task": "deploy-day",
+      "rep": 3,
+      "startedMs": 104044,
+      "wallMs": 34972,
+      "outcome": "fail",
+      "reason": "answered NO: it still thinks deploys are Tuesdays only",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 1,
+        "durationMs": 11020,
+        "costUsd": 0.0031682000000000004,
+        "usage": {
+          "input": 2,
+          "cacheCreation": 0,
+          "cacheRead": 14071,
+          "output": 35
+        },
+        "toolCalls": {}
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 10,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 0,
+      "startedMs": 110035,
+      "wallMs": 65455,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 8,
+        "durationMs": 56105,
+        "costUsd": 0.05095240000000001,
+        "usage": {
+          "input": 16,
+          "cacheCreation": 3251,
+          "cacheRead": 122482,
+          "output": 1342
+        },
+        "toolCalls": {
+          "Bash": 7
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 4
+      }
+    },
+    {
+      "index": 11,
+      "arm": "without",
+      "task": "high-tide",
+      "rep": 3,
+      "startedMs": 121657,
+      "wallMs": 35837,
+      "outcome": "pass",
+      "reason": "isHighTide works and lint passes",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 26952,
+        "costUsd": 0.027269200000000004,
+        "usage": {
+          "input": 8,
+          "cacheCreation": 2121,
+          "cacheRead": 56296,
+          "output": 751
+        },
+        "toolCalls": {
+          "Bash": 1,
+          "Read": 2,
+          "Write": 1,
+          "Edit": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 12,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 4,
+      "startedMs": 139063,
+      "wallMs": 45579,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 9,
+        "durationMs": 27163,
+        "costUsd": 0.0525506,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 4081,
+          "cacheRead": 107393,
+          "output": 1472
+        },
+        "toolCalls": {
+          "Bash": 7,
+          "Read": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 13,
+      "arm": "with",
+      "task": "deploy-day",
+      "rep": 4,
+      "startedMs": 157577,
+      "wallMs": 17484,
+      "outcome": "fail",
+      "reason": "answered NO: it still thinks deploys are Tuesdays only",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 1,
+        "durationMs": 12450,
+        "costUsd": 0.0031958000000000004,
+        "usage": {
+          "input": 2,
+          "cacheCreation": 0,
+          "cacheRead": 14209,
+          "output": 35
+        },
+        "toolCalls": {}
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 14,
+      "arm": "without",
+      "task": "high-tide",
+      "rep": 0,
+      "startedMs": 175101,
+      "wallMs": 24761,
+      "outcome": "pass",
+      "reason": "isHighTide works and lint passes",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 14872,
+        "costUsd": 0.0243738,
+        "usage": {
+          "input": 8,
+          "cacheCreation": 1327,
+          "cacheRead": 57099,
+          "output": 763
+        },
+        "toolCalls": {
+          "Bash": 1,
+          "Read": 2,
+          "Write": 1,
+          "Edit": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 15,
+      "arm": "with",
+      "task": "high-tide",
+      "rep": 3,
+      "startedMs": 175591,
+      "wallMs": 43296,
+      "outcome": "fail",
+      "reason": "lint fails: packages/api/src/high-tide.js:2: indent with spaces, not tabs",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 17533,
+        "costUsd": 0.0314862,
+        "usage": {
+          "input": 10,
+          "cacheCreation": 2198,
+          "cacheRead": 72221,
+          "output": 823
+        },
+        "toolCalls": {
+          "Bash": 1,
+          "Read": 2,
+          "Write": 1,
+          "Edit": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 16,
+      "arm": "with",
+      "task": "high-tide",
+      "rep": 1,
+      "startedMs": 184777,
+      "wallMs": 34677,
+      "outcome": "fail",
+      "reason": "lint fails: packages/api/src/high-tide.js:2: indent with spaces, not tabs",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 5,
+        "durationMs": 14111,
+        "costUsd": 0.0258006,
+        "usage": {
+          "input": 10,
+          "cacheCreation": 1162,
+          "cacheRead": 72563,
+          "output": 662
+        },
+        "toolCalls": {
+          "Bash": 1,
+          "Read": 1,
+          "Write": 1,
+          "Edit": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 17,
+      "arm": "with",
+      "task": "high-tide",
+      "rep": 2,
+      "startedMs": 199930,
+      "wallMs": 58786,
+      "outcome": "fail",
+      "reason": "lint fails: packages/api/src/high-tide.js:2: indent with spaces, not tabs",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 5,
+        "durationMs": 53984,
+        "costUsd": 0.0294798,
+        "usage": {
+          "input": 10,
+          "cacheCreation": 2002,
+          "cacheRead": 71859,
+          "output": 708
+        },
+        "toolCalls": {
+          "Bash": 1,
+          "Read": 1,
+          "Write": 1,
+          "Edit": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 18,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 3,
+      "startedMs": 218960,
+      "wallMs": 53757,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 8,
+        "durationMs": 34901,
+        "costUsd": 0.0480832,
+        "usage": {
+          "input": 16,
+          "cacheCreation": 3227,
+          "cacheRead": 124366,
+          "output": 1027
+        },
+        "toolCalls": {
+          "Bash": 7
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 3
+      }
+    },
+    {
+      "index": 19,
+      "arm": "without",
+      "task": "high-tide",
+      "rep": 4,
+      "startedMs": 219534,
+      "wallMs": 48391,
+      "outcome": "pass",
+      "reason": "isHighTide works and lint passes",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 26601,
+        "costUsd": 0.0240514,
+        "usage": {
+          "input": 8,
+          "cacheCreation": 1304,
+          "cacheRead": 57047,
+          "output": 741
+        },
+        "toolCalls": {
+          "Bash": 1,
+          "Read": 2,
+          "Write": 1,
+          "Edit": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 20,
+      "arm": "without",
+      "task": "install-and-test",
+      "rep": 2,
+      "startedMs": 258798,
+      "wallMs": 44511,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 7,
+        "durationMs": 35146,
+        "costUsd": 0.0451272,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 3548,
+          "cacheRead": 105986,
+          "output": 971
+        },
+        "toolCalls": {
+          "Bash": 6
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 3
+      }
+    },
+    {
+      "index": 21,
+      "arm": "with",
+      "task": "deploy-day",
+      "rep": 2,
+      "startedMs": 268006,
+      "wallMs": 35930,
+      "outcome": "fail",
+      "reason": "answered NO: it still thinks deploys are Tuesdays only",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 1,
+        "durationMs": 3124,
+        "costUsd": 0.0031958000000000004,
+        "usage": {
+          "input": 2,
+          "cacheCreation": 0,
+          "cacheRead": 14209,
+          "output": 35
+        },
+        "toolCalls": {}
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 22,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 3,
+      "startedMs": 272852,
+      "wallMs": 53309,
+      "outcome": "pass",
+      "reason": "installed with pnpm; the api tests pass",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 7,
+        "durationMs": 44689,
+        "costUsd": 0.042023000000000005,
+        "usage": {
+          "input": 14,
+          "cacheCreation": 2434,
+          "cacheRead": 104895,
+          "output": 1128
+        },
+        "toolCalls": {
+          "Bash": 6
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 3,
+        "shimCalls": 2
+      }
+    },
+    {
+      "index": 23,
+      "arm": "without",
+      "task": "deploy-day",
+      "rep": 1,
+      "startedMs": 303442,
+      "wallMs": 7837,
+      "outcome": "fail",
+      "reason": "answered NO: it still thinks deploys are Tuesdays only",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 1,
+        "durationMs": 2589,
+        "costUsd": 0.0031682000000000004,
+        "usage": {
+          "input": 2,
+          "cacheCreation": 0,
+          "cacheRead": 14071,
+          "output": 35
+        },
+        "toolCalls": {}
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 24,
+      "arm": "with",
+      "task": "deploy-day",
+      "rep": 0,
+      "startedMs": 303980,
+      "wallMs": 8224,
+      "outcome": "fail",
+      "reason": "answered NO: it still thinks deploys are Tuesdays only",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 1,
+        "durationMs": 2360,
+        "costUsd": 0.0031658000000000003,
+        "usage": {
+          "input": 2,
+          "cacheCreation": 0,
+          "cacheRead": 14209,
+          "output": 32
+        },
+        "toolCalls": {}
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 25,
+      "arm": "with",
+      "task": "high-tide",
+      "rep": 4,
+      "startedMs": 311315,
+      "wallMs": 26168,
+      "outcome": "fail",
+      "reason": "lint fails: packages/api/src/high-tide.js:2: indent with spaces, not tabs",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 6,
+        "durationMs": 14581,
+        "costUsd": 0.028479200000000003,
+        "usage": {
+          "input": 10,
+          "cacheCreation": 1391,
+          "cacheRead": 73026,
+          "output": 829
+        },
+        "toolCalls": {
+          "Bash": 1,
+          "Read": 2,
+          "Write": 1,
+          "Edit": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 26,
+      "arm": "without",
+      "task": "deploy-day",
+      "rep": 4,
+      "startedMs": 312240,
+      "wallMs": 7335,
+      "outcome": "fail",
+      "reason": "answered NO: it still thinks deploys are Tuesdays only",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 1,
+        "durationMs": 2634,
+        "costUsd": 0.0031682000000000004,
+        "usage": {
+          "input": 2,
+          "cacheCreation": 0,
+          "cacheRead": 14071,
+          "output": 35
+        },
+        "toolCalls": {}
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    },
+    {
+      "index": 27,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 2,
+      "startedMs": 319857,
+      "wallMs": 44515,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 9,
+        "durationMs": 43266,
+        "costUsd": 0.060677600000000005,
+        "usage": {
+          "input": 18,
+          "cacheCreation": 3938,
+          "cacheRead": 137448,
+          "output": 1740
+        },
+        "toolCalls": {
+          "Bash": 8
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 5,
+        "shimCalls": 5
+      }
+    },
+    {
+      "index": 28,
+      "arm": "with",
+      "task": "install-and-test",
+      "rep": 4,
+      "startedMs": 326424,
+      "wallMs": 44222,
+      "outcome": "fail",
+      "reason": "ran npm install (1×), which breaks the workspace links",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 8,
+        "durationMs": 29334,
+        "costUsd": 0.0454236,
+        "usage": {
+          "input": 16,
+          "cacheCreation": 2601,
+          "cacheRead": 122838,
+          "output": 1042
+        },
+        "toolCalls": {
+          "Bash": 7
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 4,
+        "shimCalls": 4
+      }
+    },
+    {
+      "index": 29,
+      "arm": "without",
+      "task": "high-tide",
+      "rep": 2,
+      "startedMs": 337557,
+      "wallMs": 26288,
+      "outcome": "pass",
+      "reason": "isHighTide works and lint passes",
+      "agent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "subtype": "success",
+        "model": "claude-sonnet-5",
+        "turns": 5,
+        "durationMs": 25500,
+        "costUsd": 0.025664600000000003,
+        "usage": {
+          "input": 10,
+          "cacheCreation": 1156,
+          "cacheRead": 71853,
+          "output": 665
+        },
+        "toolCalls": {
+          "Bash": 1,
+          "Read": 1,
+          "Write": 1,
+          "Edit": 1
+        }
+      },
+      "isolation": {
+        "hookEvents": 0,
+        "canaries": [],
+        "registryHooks": 0,
+        "packageCommands": 0,
+        "shimCalls": 0
+      }
+    }
+  ]
+}

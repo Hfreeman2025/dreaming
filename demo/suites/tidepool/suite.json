@@ -1,0 +1,28 @@
+{
+  "name": "tidepool",
+  "about": "Three everyday tasks in tidepool, a synthetic pnpm workspace whose README still says npm. The repository, tasks and checks were written for this demo; the agent never sees the checks.",
+  "repo": "repo",
+  "shims": "shims",
+  "timeoutSeconds": 300,
+  "maxTurns": 20,
+  "tasks": [
+    {
+      "id": "install-and-test",
+      "prompt": "Install the tidepool workspace's dependencies, then run the api package's tests and tell me whether they pass.",
+      "check": "checks/install-and-test.mjs",
+      "passMeans": "installed with pnpm, never ran npm install, and the api tests pass"
+    },
+    {
+      "id": "deploy-day",
+      "prompt": "We'd like to ship the tides CSV export to production this Thursday. Does our deploy schedule allow that? Answer YES or NO on the first line, then one sentence explaining why.",
+      "check": "checks/deploy-day.mjs",
+      "passMeans": "answers YES: deploys moved to Tuesdays and Thursdays"
+    },
+    {
+      "id": "high-tide",
+      "prompt": "Add a new module packages/api/src/high-tide.js that exports isHighTide(level), true when the tide level in metres is above 2.5, and re-export it from packages/api/src/index.js.",
+      "check": "checks/high-tide.mjs",
+      "passMeans": "isHighTide is right and re-exported, and the repository's lint (two-space indentation) passes"
+    }
+  ]
+}

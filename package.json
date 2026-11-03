@@ -1,0 +1,58 @@
+{
+  "name": "agent-dreaming",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nightly review of coding-agent sessions that proposes memory changes with quoted evidence. The agent proposes; a person approves.",
+  "license": "MIT",
+  "author": "Harry Freeman",
+  "type": "module",
+  "bin": {
+    "dreaming": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "prompts",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p test/browser/tsconfig.json --noEmit",
+    "lint": "eslint . && prettier --check .",
+    "test": "vitest run",
+    "demo": "npm run build && node demo/run-demo.mjs",
+    "check": "npm run typecheck && npm run lint && npm test && npm audit --audit-level=high",
+    "format": "prettier --write .",
+    "record": "npm run build && node scripts/record.mjs",
+    "record:v3": "npm run build && node scripts/record-v3.mjs",
+    "shoot": "node scripts/shoot.mjs",
+    "test:browsers": "playwright test --project=chromium && playwright test --project=webkit && playwright test --project=firefox"
+  },
+  "dependencies": {
+    "diff": "^9.0.0",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^22.20.5",
+    "@xterm/headless": "^6.0.0",
+    "eslint": "^10.14.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vite": "^7.3.7",
+    "vitest": "^5.0.5"
+  },
+  "overrides": {
+    "minimatch": "^11.0.3"
+  },
+  "optionalDependencies": {
+    "@huggingface/tokenizers": "^0.2.0",
+    "onnxruntime-web": "^1.31.1"
+  }
+}

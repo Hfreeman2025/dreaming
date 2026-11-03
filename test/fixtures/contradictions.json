@@ -1,0 +1,441 @@
+{
+  "description": "Synthetic memory-sentence pairs from the fictional tidepool project, labelled by hand before any model run. 'contradiction' means both sentences cannot be right about the same thing at the same time; 'compatible' pairs share a subject but can both hold (paraphrases, consequences, different subjects or times); 'unrelated' pairs share nothing that matters. The kind says what makes a pair hard.",
+  "pairs": [
+    {
+      "id": "c01",
+      "label": "contradiction",
+      "kind": "only-and",
+      "a": "Production deploys happen on Tuesdays only.",
+      "b": "Deploys go out on Tuesdays and Thursdays."
+    },
+    {
+      "id": "c02",
+      "label": "contradiction",
+      "kind": "value",
+      "a": "Use pnpm, never npm, in the tidepool repo.",
+      "b": "Run npm install to set up tidepool."
+    },
+    {
+      "id": "c03",
+      "label": "contradiction",
+      "kind": "state",
+      "a": "The /v1 endpoints must keep working until 15 November 2026.",
+      "b": "The /v1 endpoints now return 410 Gone."
+    },
+    {
+      "id": "c04",
+      "label": "contradiction",
+      "kind": "value",
+      "a": "Sam prefers two-space indentation.",
+      "b": "Sam prefers tabs over spaces."
+    },
+    {
+      "id": "c05",
+      "label": "contradiction",
+      "kind": "implied",
+      "a": "Indent with tabs in new files.",
+      "b": "The linter rejects tab characters in source files."
+    },
+    {
+      "id": "c06",
+      "label": "contradiction",
+      "kind": "negation",
+      "a": "Smoke tests run against staging.",
+      "b": "Smoke tests run against production, never staging."
+    },
+    {
+      "id": "c07",
+      "label": "contradiction",
+      "kind": "value",
+      "a": "Sam is a backend engineer on tidepool.",
+      "b": "Sam is a frontend designer and does not write backend code."
+    },
+    {
+      "id": "c08",
+      "label": "contradiction",
+      "kind": "value",
+      "a": "The tidepool API is written in TypeScript.",
+      "b": "The tidepool API is written in Python."
+    },
+    {
+      "id": "c09",
+      "label": "contradiction",
+      "kind": "negation",
+      "a": "Tidepool uses Postgres for storage.",
+      "b": "Tidepool stores everything in MongoDB, not Postgres."
+    },
+    {
+      "id": "c10",
+      "label": "contradiction",
+      "kind": "negation",
+      "a": "Never push directly to main.",
+      "b": "Push small fixes straight to main."
+    },
+    {
+      "id": "c11",
+      "label": "contradiction",
+      "kind": "negation",
+      "a": "Releases are tagged on Fridays.",
+      "b": "Releases are never tagged on Fridays."
+    },
+    {
+      "id": "c12",
+      "label": "contradiction",
+      "kind": "date",
+      "a": "Deploys are frozen from 20 December to 3 January.",
+      "b": "Deploys continue as normal over the Christmas break."
+    },
+    {
+      "id": "c13",
+      "label": "contradiction",
+      "kind": "value",
+      "a": "The tide gauge readings are in metres.",
+      "b": "The tide gauge readings are in feet."
+    },
+    {
+      "id": "c14",
+      "label": "contradiction",
+      "kind": "value",
+      "a": "High tide is anything above 2.5 metres.",
+      "b": "High tide is anything above 3 metres."
+    },
+    {
+      "id": "c15",
+      "label": "contradiction",
+      "kind": "negation",
+      "a": "CI must pass before merging.",
+      "b": "You can merge without waiting for CI."
+    },
+    {
+      "id": "c16",
+      "label": "contradiction",
+      "kind": "negation",
+      "a": "The staging database is reset every night.",
+      "b": "The staging database is never reset."
+    },
+    {
+      "id": "c17",
+      "label": "contradiction",
+      "kind": "value",
+      "a": "Sam is based in London.",
+      "b": "Sam is based in Lisbon."
+    },
+    {
+      "id": "c18",
+      "label": "contradiction",
+      "kind": "value",
+      "a": "Use the v2 API for all new client code.",
+      "b": "New client code should call the v1 API."
+    },
+    {
+      "id": "c19",
+      "label": "contradiction",
+      "kind": "negation",
+      "a": "Tests live in packages/api/test.",
+      "b": "There are no tests in packages/api."
+    },
+    {
+      "id": "c20",
+      "label": "contradiction",
+      "kind": "value",
+      "a": "Code review needs one approval.",
+      "b": "Code review needs two approvals."
+    },
+    {
+      "id": "c21",
+      "label": "contradiction",
+      "kind": "value",
+      "a": "The export job runs hourly.",
+      "b": "The export job runs once a day."
+    },
+    {
+      "id": "c22",
+      "label": "contradiction",
+      "kind": "negation",
+      "a": "Always run pnpm install before the tests.",
+      "b": "Never run pnpm install before the tests."
+    },
+    {
+      "id": "c23",
+      "label": "contradiction",
+      "kind": "negation",
+      "a": "The partner apps no longer call /v1.",
+      "b": "Two partner apps still call /v1."
+    },
+    {
+      "id": "c24",
+      "label": "contradiction",
+      "kind": "state",
+      "a": "Run the v1 compatibility tests before every release.",
+      "b": "The v1 compatibility tests were removed."
+    },
+    {
+      "id": "c25",
+      "label": "contradiction",
+      "kind": "only-and",
+      "a": "Only Sam can approve database migrations.",
+      "b": "Any engineer on the team can approve a database migration."
+    },
+    {
+      "id": "c26",
+      "label": "contradiction",
+      "kind": "implied",
+      "a": "Tidepool's workspace links only work with pnpm.",
+      "b": "npm install sets up the tidepool workspace correctly."
+    },
+
+    {
+      "id": "k01",
+      "label": "compatible",
+      "kind": "entailment",
+      "a": "Use pnpm, never npm, in the tidepool repo.",
+      "b": "Tidepool's workspace links break under npm install."
+    },
+    {
+      "id": "k02",
+      "label": "compatible",
+      "kind": "entailment",
+      "a": "Production deploys happen on Tuesdays and Thursdays.",
+      "b": "Deploys go out on Thursdays."
+    },
+    {
+      "id": "k03",
+      "label": "compatible",
+      "kind": "entailment",
+      "a": "Sam is a backend engineer on tidepool.",
+      "b": "Sam writes TypeScript and Postgres code."
+    },
+    {
+      "id": "k04",
+      "label": "compatible",
+      "kind": "entailment",
+      "a": "The v2 API is live.",
+      "b": "New code should call the v2 API."
+    },
+    {
+      "id": "k05",
+      "label": "compatible",
+      "kind": "entailment",
+      "a": "Smoke tests use the staging key.",
+      "b": "Smoke tests run against staging."
+    },
+    {
+      "id": "k06",
+      "label": "compatible",
+      "kind": "entailment",
+      "a": "Indent with two spaces.",
+      "b": "The linter rejects tab characters."
+    },
+    {
+      "id": "k07",
+      "label": "compatible",
+      "kind": "entailment",
+      "a": "Deploys are frozen from 20 December to 3 January.",
+      "b": "There is no deploy on Christmas Day."
+    },
+    {
+      "id": "k08",
+      "label": "compatible",
+      "kind": "entailment",
+      "a": "High tide is anything above 2.5 metres.",
+      "b": "A reading of 3 metres counts as high tide."
+    },
+    {
+      "id": "k09",
+      "label": "compatible",
+      "kind": "paraphrase",
+      "a": "CI must pass before merging.",
+      "b": "Merges wait for a green CI run."
+    },
+    {
+      "id": "k10",
+      "label": "compatible",
+      "kind": "paraphrase",
+      "a": "The export job runs hourly.",
+      "b": "Exports are produced every hour."
+    },
+    {
+      "id": "k11",
+      "label": "compatible",
+      "kind": "paraphrase",
+      "a": "Sam prefers short pull requests.",
+      "b": "Keep pull requests small when Sam reviews them."
+    },
+    {
+      "id": "k12",
+      "label": "compatible",
+      "kind": "date",
+      "a": "The v2 API migration is due on 15 November 2026.",
+      "b": "The v2 API went live on 30 October 2026."
+    },
+    {
+      "id": "k13",
+      "label": "compatible",
+      "kind": "hard-subject",
+      "a": "Use npm in the legacy billing repo.",
+      "b": "Use pnpm in tidepool."
+    },
+    {
+      "id": "k14",
+      "label": "compatible",
+      "kind": "hard-subject",
+      "a": "Deploys of the billing service happen on Mondays.",
+      "b": "Tidepool deploys happen on Tuesdays only."
+    },
+    {
+      "id": "k15",
+      "label": "compatible",
+      "kind": "hard-subject",
+      "a": "The staging database is reset every night.",
+      "b": "Production data is never reset."
+    },
+    {
+      "id": "k16",
+      "label": "compatible",
+      "kind": "paraphrase",
+      "a": "Release notes are written in British English.",
+      "b": "Use British spelling in user-facing text."
+    },
+    {
+      "id": "k17",
+      "label": "compatible",
+      "kind": "entailment",
+      "a": "The tides service caches readings for five minutes.",
+      "b": "Readings may be up to five minutes old."
+    },
+    {
+      "id": "k18",
+      "label": "compatible",
+      "kind": "entailment",
+      "a": "Never commit secrets to the repo.",
+      "b": "Keep the staging key out of git."
+    },
+    {
+      "id": "k19",
+      "label": "compatible",
+      "kind": "temporal",
+      "a": "Tidepool used npm until March 2026.",
+      "b": "Tidepool uses pnpm now."
+    },
+    {
+      "id": "k20",
+      "label": "compatible",
+      "kind": "temporal",
+      "a": "Sam used to prefer tabs.",
+      "b": "Sam prefers two-space indentation."
+    },
+    {
+      "id": "k21",
+      "label": "compatible",
+      "kind": "hard-subject",
+      "a": "Never deploy on Fridays.",
+      "b": "Releases are tagged on Fridays."
+    },
+    {
+      "id": "k22",
+      "label": "compatible",
+      "kind": "hard-subject",
+      "a": "The billing API is written in Python.",
+      "b": "The tidepool API is written in TypeScript."
+    },
+
+    {
+      "id": "u01",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "Sam is a backend engineer on tidepool.",
+      "b": "Deploys go out on Tuesdays and Thursdays."
+    },
+    {
+      "id": "u02",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "Use pnpm, never npm, in the tidepool repo.",
+      "b": "High tide is anything above 2.5 metres."
+    },
+    {
+      "id": "u03",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "The v2 API is live.",
+      "b": "Sam prefers short pull requests."
+    },
+    {
+      "id": "u04",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "The export job runs hourly.",
+      "b": "Code review needs one approval."
+    },
+    {
+      "id": "u05",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "Smoke tests use the staging key.",
+      "b": "Release notes are written in British English."
+    },
+    {
+      "id": "u06",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "The tide gauge readings are in metres.",
+      "b": "Never push directly to main."
+    },
+    {
+      "id": "u07",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "The staging database is reset every night.",
+      "b": "Sam is based in London."
+    },
+    {
+      "id": "u08",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "Tests live in packages/api/test.",
+      "b": "The partner apps call the tides endpoint."
+    },
+    {
+      "id": "u09",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "Deploys are frozen over Christmas.",
+      "b": "The linter rejects tab characters."
+    },
+    {
+      "id": "u10",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "Use the v2 API for new client code.",
+      "b": "Sam prefers tea to coffee."
+    },
+    {
+      "id": "u11",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "The tides service caches readings for five minutes.",
+      "b": "Code review needs two approvals."
+    },
+    {
+      "id": "u12",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "Releases are tagged on Fridays.",
+      "b": "Tidepool stores data in Postgres."
+    },
+    {
+      "id": "u13",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "CI runs on every push.",
+      "b": "Sam reviews pull requests in the morning."
+    },
+    {
+      "id": "u14",
+      "label": "unrelated",
+      "kind": "unrelated",
+      "a": "The api package exports isHighTide.",
+      "b": "Deploy windows are announced in the team channel."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+[
+  {
+    "schemaVersion": 1,
+    "runId": "20261102-165936-a9e4",
+    "createdAt": "2026-11-02T16:59:36.319Z",
+    "memoryDir": "<tmp>/memory",
+    "agent": {
+      "kind": "claude",
+      "command": [
+        "<repo>/demo/fake-agent.mjs",
+        "--print",
+        "--output-format",
+        "json",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--disallowedTools",
+        "Bash,Edit,MultiEdit,Write,NotebookEdit,WebFetch,WebSearch,Task,Agent",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--no-session-persistence",
+        "--add-dir",
+        "<tmp>/dreaming-home/runs/20261102-165936-a9e4",
+        "--add-dir",
+        "<tmp>/memory"
+      ],
+      "durationMs": 152,
+      "costUsd": 0,
+      "turns": 6
+    },
+    "summary": "2 sessions: 1 new preference, 2 outdated memories, 2 weak proposals.",
+    "sessions": [
+      {
+        "ref": "S1",
+        "sessionId": "3b9e7c1a-52d4-4f0e-9c61-8a2f4d7e1b03",
+        "path": "<tmp>/projects/-home-sam-tidepool/3b9e7c1a-52d4-4f0e-9c61-8a2f4d7e1b03.jsonl",
+        "project": "-home-sam-tidepool",
+        "cwd": "/home/sam/tidepool",
+        "firstLine": 1,
+        "lastLine": 6,
+        "messages": 6,
+        "omittedMessages": 0,
+        "malformedLines": 0,
+        "firstTimestamp": "2026-11-01T09:12:00.000Z",
+        "lastTimestamp": "2026-11-01T09:41:00.000Z"
+      },
+      {
+        "ref": "S2",
+        "sessionId": "a41f0d62-9e37-4b85-b2c4-6d1e8f3a7c59",
+        "path": "<tmp>/projects/-home-sam-tidepool/a41f0d62-9e37-4b85-b2c4-6d1e8f3a7c59.jsonl",
+        "project": "-home-sam-tidepool",
+        "cwd": "/home/sam/tidepool",
+        "firstLine": 1,
+        "lastLine": 5,
+        "messages": 4,
+        "omittedMessages": 0,
+        "malformedLines": 1,
+        "firstTimestamp": "2026-11-01T15:02:00.000Z",
+        "lastTimestamp": "2026-11-01T15:22:00.000Z"
+      }
+    ],
+    "skipped": [
+      {
+        "path": "<tmp>/projects/-home-sam-tidepool/c7d2e855-1f6a-4e93-8b0d-2a5c9e4f6d18.jsonl",
+        "reason": "active",
+        "detail": "modified in the last 5 minutes; will be read once it settles"
+      }
+    ],
+    "redactions": 2,
+    "replyRedactions": 1,
+    "proposals": [
+      {
+        "action": "add",
+        "description": "Use pnpm, never npm, in the tidepool repo",
+        "type": "feedback",
+        "body": "Use pnpm for installs and scripts in tidepool, never npm.\n\n**Why:** npm install breaks the pnpm workspace links.\n\n**How to apply:** run `pnpm install` / `pnpm <script>`; if a doc says npm, translate it.",
+        "id": "20261102-165936-a9e4-1",
+        "file": "prefer-pnpm.md",
+        "name": "prefer-pnpm",
+        "reason": "Sam corrected the agent after it ran npm install.",
+        "confidence": "high",
+        "evidence": [
+          {
+            "session": "S1",
+            "quote": "Use pnpm here, not npm. npm install breaks the workspace links in this repo.",
+            "status": "verified",
+            "line": 3,
+            "source": "Use pnpm here, not npm. npm install breaks the workspace links in this repo."
+          }
+        ],
+        "baseHash": null,
+        "problems": [],
+        "status": "pending"
+      },
+      {
+        "action": "update",
+        "description": "Production deploys happen on Tuesdays and Thursdays",
+        "type": "project",
+        "body": "Production deploys go out on Tuesdays and Thursdays (release train changed the week of 26 October 2026).\n\n**Why:** the on-call rota is staffed for releases on those days.\n\n**How to apply:** do not suggest a production deploy on any other day.",
+        "id": "20261102-165936-a9e4-2",
+        "file": "deploy-window.md",
+        "name": "deploy-window",
+        "reason": "The memory says Tuesdays only; Sam said the release train changed.",
+        "confidence": "high",
+        "evidence": [
+          {
+            "session": "S1",
+            "quote": "the release train changed ... We deploy on Tuesdays and Thursdays now.",
+            "status": "verified",
+            "line": 5,
+            "source": "the release train changed this week. We deploy on Tuesdays and Thursdays now."
+          }
+        ],
+        "baseHash": "6ba2db44ffde29289a5b81ed80980c8c10a38b59404aee47b7273af79f931664",
+        "problems": [],
+        "status": "pending"
+      },
+      {
+        "action": "update",
+        "description": "The v2 API is live (since 30 October 2026); /v1 returns 410",
+        "type": "project",
+        "body": "The v2 API went live on 30 October 2026. The /v1 endpoints now return 410 and the v1 compatibility tests were removed.\n\n**Why:** the migration finished ahead of the 15 November deadline.\n\n**How to apply:** do not add or keep /v1 compatibility code.",
+        "id": "20261102-165936-a9e4-3",
+        "file": "api-v2-deadline.md",
+        "name": "api-v2-deadline",
+        "reason": "The memory still describes the migration as due.",
+        "confidence": "high",
+        "evidence": [
+          {
+            "session": "S2",
+            "quote": "The v2 API went live on 30 October; the old /v1 endpoints return 410 now",
+            "status": "verified",
+            "line": 1,
+            "source": "The v2 API went live on 30 October; the old /v1 endpoints return 410 now"
+          }
+        ],
+        "baseHash": "c71dbbf4cc8cc356ac2f2f318ac3167ceb1277f702349b0970372105dc96544f",
+        "problems": [],
+        "status": "pending"
+      },
+      {
+        "action": "add",
+        "description": "Staging key for the tidepool smoke test",
+        "type": "reference",
+        "body": "Smoke tests use the staging key [REDACTED:anthropic-key] against /v2/tides.",
+        "id": "20261102-165936-a9e4-4",
+        "file": "staging-smoke-key.md",
+        "name": "staging-smoke-key",
+        "reason": "Sam provided the key for smoke tests.",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "session": "S2",
+            "quote": "For the smoke test, use the staging key",
+            "status": "verified",
+            "line": 4,
+            "source": "For the smoke test, use the staging key"
+          }
+        ],
+        "baseHash": null,
+        "problems": [],
+        "status": "pending"
+      },
+      {
+        "action": "add",
+        "description": "Sam prefers tabs over spaces",
+        "type": "feedback",
+        "body": "Indent with tabs.\n\n**Why:** stated preference.\n\n**How to apply:** use tabs in new files.",
+        "id": "20261102-165936-a9e4-5",
+        "file": "prefers-tabs.md",
+        "name": "prefers-tabs",
+        "reason": "Inferred from a formatting discussion.",
+        "confidence": "low",
+        "evidence": [
+          {
+            "session": "S1",
+            "quote": "I always want tabs, never spaces.",
+            "status": "not-found"
+          }
+        ],
+        "baseHash": null,
+        "problems": [],
+        "status": "pending"
+      }
+    ]
+  }
+]

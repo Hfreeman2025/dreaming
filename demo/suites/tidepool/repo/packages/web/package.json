@@ -1,0 +1,9 @@
+{
+  "name": "@tidepool/web",
+  "version": "0.4.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@tidepool/api": "workspace:*"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@tidepool/api",
+  "version": "0.4.0",
+  "type": "module",
+  "exports": "./src/index.js",
+  "dependencies": {
+    "@tidepool/core": "workspace:*"
+  },
+  "scripts": {
+    "test": "node --test 'test/**/*.test.js'"
+  }
+}

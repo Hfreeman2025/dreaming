@@ -1,0 +1,6 @@
+{
+  "name": "@tidepool/core",
+  "version": "0.4.0",
+  "type": "module",
+  "exports": "./src/index.js"
+}

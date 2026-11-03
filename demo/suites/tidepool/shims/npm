@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+// npm in the eval sandbox: installing fails exactly as real npm does on pnpm's workspace: protocol.
+import { offline, pick, record, runLint, runTests } from "./_common.mjs";
+
+const args = process.argv.slice(2);
+record("npm", args);
+const words = args.filter((a) => !a.startsWith("-"));
+const [command, ...more] = words;
+if (args.includes("--version") || args.includes("-v")) {
+  console.log("10.9.2");
+} else if (["install", "i", "ci", "add", "install-test", "it"].includes(command)) {
+  console.error('npm error code EUNSUPPORTEDPROTOCOL\nnpm error Unsupported URL Type "workspace:": workspace:*');
+  process.exit(1);
+} else if (command === "test" || command === "t" || (command === "run" && more[0] === "test")) {
+  const flag = args.findIndex((a) => a === "-w" || a === "--workspace");
+  const target = pick(flag >= 0 ? args[flag + 1] : undefined);
+  process.exit(runTests(target === "none" ? null : target));
+} else if (command === "run" && more[0] === "lint") {
+  process.exit(runLint());
+} else {
+  offline("npm", args);
+}

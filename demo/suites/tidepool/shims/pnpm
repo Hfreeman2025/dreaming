@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+// pnpm in the eval sandbox: install links the workspace (no registry needed), test and lint run for real.
+import { writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { linkWorkspace, offline, packages, pick, record, repo, runLint, runTests } from "./_common.mjs";
+
+const args = process.argv.slice(2);
+record("pnpm", args);
+let filter;
+const rest = [];
+for (let i = 0; i < args.length; i += 1) {
+  const arg = args[i];
+  if (arg === "--filter" || arg === "-F" || arg === "-C" || arg === "--dir") filter = args[++i];
+  else if (arg.startsWith("--filter=")) filter = arg.slice(9);
+  else if (arg === "-r" || arg === "--recursive" || arg === "-w" || arg === "--workspace-root") continue;
+  else rest.push(arg);
+}
+const [command, ...more] = rest;
+if (command === "--version" || command === "-v") {
+  console.log("9.12.0");
+} else if (command === "install" || command === "i") {
+  linkWorkspace();
+  writeFileSync(join(repo, "pnpm-lock.yaml"), "lockfileVersion: '9.0'\n");
+  console.log(`Scope: all ${packages().length} workspace projects\nPackages: +${packages().length}\nDone in 0.4s`);
+} else if (command === "test" || (command === "run" && more[0] === "test") || command === "t") {
+  const target = pick(filter);
+  if (target === "none") {
+    console.error(`No projects matched the filter "${filter}"`);
+    process.exit(1);
+  }
+  process.exit(runTests(target));
+} else if (command === "lint" || (command === "run" && more[0] === "lint")) {
+  process.exit(runLint());
+} else {
+  offline("pnpm", args);
+}

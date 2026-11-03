@@ -1,0 +1,11 @@
+{
+  "name": "tidepool",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "node --test 'packages/*/test/**/*.test.js'",
+    "lint": "node scripts/lint.mjs"
+  }
+}

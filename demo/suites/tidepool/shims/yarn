@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+// yarn in the eval sandbox: recorded, and unavailable (there is no registry to fetch from).
+import { offline, record } from "./_common.mjs";
+
+record("yarn", process.argv.slice(2));
+offline("yarn", process.argv.slice(2));
