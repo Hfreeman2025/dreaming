@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { createServer, type Server } from "node:http";
+import { createRequire } from "node:module";
 import { mkdir, mkdtemp, readdir, realpath, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -395,17 +396,16 @@ describe("the model files", () => {
 
 describe("loading the engine", () => {
   it("says what is missing, instead of failing, when the runtime packages are not installed", async () => {
-    const empty = await realpath(await mkdtemp(join(tmpdir(), "dreaming-noruntime-")));
-    try {
-      const result = await loadNliEngine(join(empty, "model"), { runtimeFrom: empty });
-      expect(result).toEqual({
-        ok: false,
-        reason:
-          "the contradiction check needs the optional packages onnxruntime-web and @huggingface/tokenizers, which are not installed",
-      });
-    } finally {
-      await rm(empty, { recursive: true, force: true });
-    }
+    // Node's own "not found" error, for package names no machine has installed,
+    // whatever node_modules sit above the test's directories.
+    const absent = (name: string) =>
+      Promise.resolve().then((): unknown => createRequire(import.meta.url)(`${name}-not-installed`));
+    const result = await loadNliEngine("/nonexistent/model", { importModule: absent });
+    expect(result).toEqual({
+      ok: false,
+      reason:
+        "the contradiction check needs the optional packages onnxruntime-web and @huggingface/tokenizers, which are not installed",
+    });
   });
 
   // Runs the real model only where its weights are on disk: DREAMING_NLI_MODEL_DIR=<models folder>

@@ -13,7 +13,8 @@ import { createRedactor } from "../src/redact.js";
  */
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
-const SKIP_DIRS = new Set(["node_modules", "dist", ".git", "coverage", ".claude"]);
+// Not committed (all ignored); .cache may hold a scratch clone or a temporary directory.
+const SKIP_DIRS = new Set(["node_modules", "dist", ".git", "coverage", ".claude", ".cache"]);
 const TEXT_FILE = /\.(ts|mjs|js|json|md|yml|yaml)$|^(LICENSE|\.gitignore)$/;
 // Generated, and full of integrity hashes that look random by design.
 const SKIP_FILES = new Set(["package-lock.json"]);

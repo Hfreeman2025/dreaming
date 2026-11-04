@@ -1,9 +1,10 @@
 import { readdir } from "node:fs/promises";
+import { homedir } from "node:os";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import type { StoredProposal } from "../src/inbox/schema.js";
 import { loadRuns, saveRun } from "../src/inbox/store.js";
 import { review, type ReviewSummary } from "../src/review/session.js";
-import { textWidth } from "../src/ui/text.js";
+import { textWidth, tildify } from "../src/ui/text.js";
 import {
   ADD,
   DELETE_UNVERIFIED,
@@ -108,7 +109,8 @@ describe("dreaming review (full screen)", () => {
     expect(submit).toContain("Submit review");
     expect(submit).toContain("✓ approve   add    prefer-pnpm.md");
     expect(submit).toContain("✗ reject    update deploy-window.md");
-    expect(submit).toContain(`Changes to ${sandbox.memoryDir}`);
+    // Shown as the screen shows it: under ~ when the temporary directory is inside your home.
+    expect(submit).toContain(`Changes to ${tildify(sandbox.memoryDir, homedir())}`);
     expect(summary.outcome).toBe("applied");
     expect(await readMemory(sandbox, "prefer-pnpm.md")).toContain("name: prefer-pnpm");
     expect(screen.output).toContain("Applied 1 change to");

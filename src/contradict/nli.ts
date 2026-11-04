@@ -39,6 +39,13 @@ export interface LoadOptions {
    * dreaming's own node_modules (for measuring with a copy installed elsewhere).
    */
   runtimeFrom?: string;
+  /**
+   * How to import each runtime package by name, in place of resolving it from
+   * `runtimeFrom` or dreaming's own node_modules. Tests use it to stand for a
+   * machine without the packages: Node's resolver walks up from any directory,
+   * so an empty one can still find a node_modules above it.
+   */
+  importModule?: (name: string) => Promise<unknown>;
 }
 
 // ---------------------------------------------------------------------------
@@ -135,9 +142,10 @@ export async function loadNliEngine(modelPath: string, options: LoadOptions = {}
   const spec = options.spec ?? NLI_MODEL;
   let ort: OrtModule | undefined;
   let textCodec: TokenizersModule | undefined;
+  const load = options.importModule ?? ((name: string) => importOptional(name, options.runtimeFrom));
   try {
-    ort = pick(await importOptional("onnxruntime-web", options.runtimeFrom), isOrtModule);
-    textCodec = pick(await importOptional("@huggingface/tokenizers", options.runtimeFrom), isTokenizersModule);
+    ort = pick(await load("onnxruntime-web"), isOrtModule);
+    textCodec = pick(await load("@huggingface/tokenizers"), isTokenizersModule);
   } catch (error) {
     if (errorCode(error) === "ERR_MODULE_NOT_FOUND" || errorCode(error) === "MODULE_NOT_FOUND") {
       return { ok: false, reason: MISSING };
