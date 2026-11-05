@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 // Record the real CLI, in a real pseudo-terminal, against synthetic data and
 // the demo's fake agent:
-//   shots/v2/demo.cast + demo.svg   the loop for the README (run, review, why)
-//   shots/v2/stills/<state>-<size>.svg   every screen state at two terminal sizes
-// Usage: npm run record (builds first). No model is called; nothing outside a
-// temporary directory and shots/v2 is touched.
+//   shots/core/demo.cast + demo.svg   the core loop (run, review, why)
+//   shots/core/stills/<state>-<size>.svg   every screen state at two terminal sizes
+// Usage: npm run record:core (builds first). No model is called; nothing outside a
+// temporary directory and shots/core is touched.
 import { spawnSync } from "node:child_process";
 import { chmod, mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { availableParallelism, homedir, loadavg, tmpdir } from "node:os";
@@ -18,7 +18,7 @@ const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const CLI = join(ROOT, "dist", "cli.js");
 const AGENT = join(ROOT, "demo", "fake-agent.mjs");
 const EDITOR = join(ROOT, "scripts", "lib", "demo-editor.mjs");
-const OUT = join(ROOT, "shots", "v2");
+const OUT = join(ROOT, "shots", "core");
 const SIZES = { wide: { cols: 120, rows: 36 }, narrow: { cols: 58, rows: 32 } };
 const temps = [];
 

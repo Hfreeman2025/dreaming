@@ -31,6 +31,16 @@ models/
 .vscode/
 *.swp
 
-# Playwright output
+# Test output
 test-results/
 playwright-report/
+blob-report/
+
+# Packaging, registry credentials, and stray captures (the recordings in shots/ are docs; screenshots anywhere else are not)
+*.tgz
+.npmrc
+/*.png
+/*.jpg
+/*.gif
+/*.mp4
+/*.mov

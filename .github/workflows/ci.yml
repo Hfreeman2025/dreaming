@@ -11,6 +11,11 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# Everything here runs offline against synthetic data and fake agents. Two
+# checks never run in CI, by design: the real-model contradiction test (it runs
+# only when DREAMING_NLI_MODEL_DIR points at the downloaded model, and shows as
+# skipped otherwise), and scripts/record-evals.mjs, which makes real claude -p
+# calls under a personal login.
 jobs:
   check:
     name: Node ${{ matrix.node }} on ${{ matrix.os }}

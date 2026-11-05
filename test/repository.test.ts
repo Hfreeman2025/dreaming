@@ -49,7 +49,7 @@ describe("repository hygiene", () => {
     // The recordings are of a sandbox whose home is shown as ~; a real path means something leaked.
     const local = [/\/Users\//, /\/var\/folders\//, /\/private\/tmp\//, /\/tmp\/dreaming-record-/, homedir(), ROOT];
     const offenders: string[] = [];
-    for (const dir of [join(ROOT, "shots", "v2"), join(ROOT, "shots", "v3"), join(ROOT, "demo", "recorded")]) {
+    for (const dir of [join(ROOT, "shots"), join(ROOT, "demo", "recorded")]) {
       const files = (await readdir(dir, { recursive: true }).catch(() => [])).filter((f) =>
         /\.(svg|cast|json)$/.test(f),
       );

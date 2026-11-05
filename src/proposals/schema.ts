@@ -97,7 +97,6 @@ export const DreamOutputSchema = z.strictObject({
 
 export type Proposal = z.infer<typeof ProposalSchema>;
 export type DreamOutput = z.infer<typeof DreamOutputSchema>;
-export type MemoryType = z.infer<typeof MemoryTypeSchema>;
 export type Confidence = z.infer<typeof ConfidenceSchema>;
 
 /** JSON Schema for the prompt, generated from the same zod schema that validates. */

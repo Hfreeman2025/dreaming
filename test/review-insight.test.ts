@@ -4,7 +4,8 @@ import { EvalRecordSchema, saveEval, type EvalRecord, type EvalRun } from "../sr
 import { summarise } from "../src/eval/summary.js";
 import { insightKey, loadInsights, NO_INSIGHT, type Insight } from "../src/review/insight.js";
 import { ReviewModel } from "../src/review/model.js";
-import { renderConflicts, renderList, renderMeasured } from "../src/review/render.js";
+import { renderList } from "../src/review/render.js";
+import { renderConflicts, renderMeasured } from "../src/review/render-insight.js";
 import { toPlain } from "../src/ui/text.js";
 import { ADD, DEPLOY, INDEX, RUN_ID, UPDATE, runRecord } from "./helpers/review-fixtures.js";
 import { makeSandbox, writeMemory, type Sandbox } from "./helpers/sandbox.js";

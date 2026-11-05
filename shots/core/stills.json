@@ -1,0 +1,366 @@
+[
+  {
+    "state": "home-unset",
+    "size": "wide",
+    "file": "stills/home-unset-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "help",
+    "size": "wide",
+    "file": "stills/help-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "run-dry",
+    "size": "wide",
+    "file": "stills/run-dry-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "run-loading",
+    "size": "wide",
+    "file": "stills/run-loading-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "run-result",
+    "size": "wide",
+    "file": "stills/run-result-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "home",
+    "size": "wide",
+    "file": "stills/home-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-first",
+    "size": "wide",
+    "file": "stills/review-first-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-scrolled",
+    "size": "wide",
+    "file": "stills/review-scrolled-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-edited",
+    "size": "wide",
+    "file": "stills/review-edited-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-update",
+    "size": "wide",
+    "file": "stills/review-update-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-key",
+    "size": "wide",
+    "file": "stills/review-key-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-blocked",
+    "size": "wide",
+    "file": "stills/review-blocked-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-help",
+    "size": "wide",
+    "file": "stills/review-help-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-quit",
+    "size": "wide",
+    "file": "stills/review-quit-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-submit",
+    "size": "wide",
+    "file": "stills/review-submit-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-applied",
+    "size": "wide",
+    "file": "stills/review-applied-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "why",
+    "size": "wide",
+    "file": "stills/why-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "run-nothing",
+    "size": "wide",
+    "file": "stills/run-nothing-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-empty",
+    "size": "wide",
+    "file": "stills/review-empty-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "status",
+    "size": "wide",
+    "file": "stills/status-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "why-none",
+    "size": "wide",
+    "file": "stills/why-none-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "why-changed",
+    "size": "wide",
+    "file": "stills/why-changed-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-plain",
+    "size": "wide",
+    "file": "stills/review-plain-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-nocolor",
+    "size": "wide",
+    "file": "stills/review-nocolor-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-small",
+    "size": "wide",
+    "file": "stills/review-small-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "run-error",
+    "size": "wide",
+    "file": "stills/run-error-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "home-unset",
+    "size": "narrow",
+    "file": "stills/home-unset-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "help",
+    "size": "narrow",
+    "file": "stills/help-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "run-dry",
+    "size": "narrow",
+    "file": "stills/run-dry-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "run-loading",
+    "size": "narrow",
+    "file": "stills/run-loading-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "run-result",
+    "size": "narrow",
+    "file": "stills/run-result-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "home",
+    "size": "narrow",
+    "file": "stills/home-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-first",
+    "size": "narrow",
+    "file": "stills/review-first-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-scrolled",
+    "size": "narrow",
+    "file": "stills/review-scrolled-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-edited",
+    "size": "narrow",
+    "file": "stills/review-edited-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-update",
+    "size": "narrow",
+    "file": "stills/review-update-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-key",
+    "size": "narrow",
+    "file": "stills/review-key-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-blocked",
+    "size": "narrow",
+    "file": "stills/review-blocked-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-help",
+    "size": "narrow",
+    "file": "stills/review-help-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-quit",
+    "size": "narrow",
+    "file": "stills/review-quit-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-submit",
+    "size": "narrow",
+    "file": "stills/review-submit-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-applied",
+    "size": "narrow",
+    "file": "stills/review-applied-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "why",
+    "size": "narrow",
+    "file": "stills/why-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "run-nothing",
+    "size": "narrow",
+    "file": "stills/run-nothing-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-empty",
+    "size": "narrow",
+    "file": "stills/review-empty-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "status",
+    "size": "narrow",
+    "file": "stills/status-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "why-none",
+    "size": "narrow",
+    "file": "stills/why-none-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "why-changed",
+    "size": "narrow",
+    "file": "stills/why-changed-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-plain",
+    "size": "narrow",
+    "file": "stills/review-plain-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-nocolor",
+    "size": "narrow",
+    "file": "stills/review-nocolor-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-small",
+    "size": "narrow",
+    "file": "stills/review-small-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "run-error",
+    "size": "narrow",
+    "file": "stills/run-error-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  }
+]

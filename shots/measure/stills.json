@@ -1,0 +1,254 @@
+[
+  {
+    "state": "eval-list",
+    "size": "wide",
+    "file": "stills/eval-list-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-dry-run",
+    "size": "wide",
+    "file": "stills/eval-dry-run-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-confirm",
+    "size": "wide",
+    "file": "stills/eval-confirm-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-running",
+    "size": "wide",
+    "file": "stills/eval-running-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-hurts",
+    "size": "wide",
+    "file": "stills/eval-hurts-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-helps",
+    "size": "wide",
+    "file": "stills/eval-helps-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-no-effect",
+    "size": "wide",
+    "file": "stills/eval-no-effect-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "check",
+    "size": "wide",
+    "file": "stills/check-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "models",
+    "size": "wide",
+    "file": "stills/models-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-measured",
+    "size": "wide",
+    "file": "stills/review-measured-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-conflict",
+    "size": "wide",
+    "file": "stills/review-conflict-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "review-worse",
+    "size": "wide",
+    "file": "stills/review-worse-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "models-missing",
+    "size": "wide",
+    "file": "stills/models-missing-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "check-missing",
+    "size": "wide",
+    "file": "stills/check-missing-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-isolation",
+    "size": "wide",
+    "file": "stills/eval-isolation-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-logged-out",
+    "size": "wide",
+    "file": "stills/eval-logged-out-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-live",
+    "size": "wide",
+    "file": "stills/eval-live-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-interrupted",
+    "size": "wide",
+    "file": "stills/eval-interrupted-wide.svg",
+    "cols": 120,
+    "rows": 36
+  },
+  {
+    "state": "eval-list",
+    "size": "narrow",
+    "file": "stills/eval-list-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "eval-dry-run",
+    "size": "narrow",
+    "file": "stills/eval-dry-run-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "eval-confirm",
+    "size": "narrow",
+    "file": "stills/eval-confirm-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "eval-running",
+    "size": "narrow",
+    "file": "stills/eval-running-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "eval-hurts",
+    "size": "narrow",
+    "file": "stills/eval-hurts-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "eval-helps",
+    "size": "narrow",
+    "file": "stills/eval-helps-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "eval-no-effect",
+    "size": "narrow",
+    "file": "stills/eval-no-effect-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "check",
+    "size": "narrow",
+    "file": "stills/check-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "models",
+    "size": "narrow",
+    "file": "stills/models-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-measured",
+    "size": "narrow",
+    "file": "stills/review-measured-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-conflict",
+    "size": "narrow",
+    "file": "stills/review-conflict-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "review-worse",
+    "size": "narrow",
+    "file": "stills/review-worse-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "models-missing",
+    "size": "narrow",
+    "file": "stills/models-missing-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "check-missing",
+    "size": "narrow",
+    "file": "stills/check-missing-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "eval-isolation",
+    "size": "narrow",
+    "file": "stills/eval-isolation-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "eval-logged-out",
+    "size": "narrow",
+    "file": "stills/eval-logged-out-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "eval-live",
+    "size": "narrow",
+    "file": "stills/eval-live-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  },
+  {
+    "state": "eval-interrupted",
+    "size": "narrow",
+    "file": "stills/eval-interrupted-narrow.svg",
+    "cols": 58,
+    "rows": 32
+  }
+]

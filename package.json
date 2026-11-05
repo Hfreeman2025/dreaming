@@ -5,6 +5,14 @@
   "description": "Nightly review of coding-agent sessions that proposes memory changes with quoted evidence. The agent proposes; a person approves.",
   "license": "MIT",
   "author": "Harry Freeman",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hfreeman2025/dreaming.git"
+  },
+  "homepage": "https://github.com/Hfreeman2025/dreaming#readme",
+  "bugs": {
+    "url": "https://github.com/Hfreeman2025/dreaming/issues"
+  },
   "type": "module",
   "bin": {
     "dreaming": "dist/cli.js"
@@ -26,8 +34,9 @@
     "demo": "npm run build && node demo/run-demo.mjs",
     "check": "npm run typecheck && npm run lint && npm test && npm audit --audit-level=high",
     "format": "prettier --write .",
-    "record": "npm run build && node scripts/record.mjs",
-    "record:v3": "npm run build && node scripts/record-v3.mjs",
+    "record": "npm run build && node scripts/record-core.mjs && node scripts/record-measure.mjs",
+    "record:core": "npm run build && node scripts/record-core.mjs",
+    "record:measure": "npm run build && node scripts/record-measure.mjs",
     "shoot": "node scripts/shoot.mjs",
     "test:browsers": "playwright test --project=chromium && playwright test --project=webkit && playwright test --project=firefox"
   },

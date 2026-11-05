@@ -8,7 +8,7 @@
 import { spawnSync } from "node:child_process";
 import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { homedir, tmpdir, userInfo } from "node:os";
-import { join } from "node:path";
+import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { writeFixtures } from "../demo/fixtures.mjs";
 import { runEval } from "../dist/eval/engine.js";
@@ -32,8 +32,14 @@ if (!process.argv.includes("--yes")) {
 const flag = process.argv.indexOf("--model");
 const model = flag > 0 ? process.argv[flag + 1] : "sonnet";
 
-/** Paths from this machine out of a record: home as ~, the sandbox as <tmp>. */
-const tidy = (text, root) => text.replaceAll(root, "<tmp>").replaceAll(tmpdir(), "<tmp>").replaceAll(homedir(), "~");
+/** Paths from this machine out of a record: the sandbox as <tmp>, this checkout as <repo>, the agent by name, home as ~. */
+const tidy = (text, root, agent) =>
+  text
+    .replaceAll(root, "<tmp>")
+    .replaceAll(tmpdir(), "<tmp>")
+    .replaceAll(ROOT, "<repo>")
+    .replaceAll(JSON.stringify(agent), JSON.stringify(basename(agent)))
+    .replaceAll(homedir(), "~");
 
 const root = await mkdtemp(join(tmpdir(), "dreaming-recorded-"));
 try {
@@ -96,9 +102,9 @@ try {
   }
   await rm(OUT, { recursive: true, force: true });
   await mkdir(join(OUT, "evals"), { recursive: true });
-  await writeFile(join(OUT, "inbox.json"), `${tidy(JSON.stringify(runs, null, 2), root)}\n`);
+  await writeFile(join(OUT, "inbox.json"), `${tidy(JSON.stringify(runs, null, 2), root, claude)}\n`);
   for (const name of await readdir(evalsDir)) {
-    await writeFile(join(OUT, "evals", name), tidy(await readFile(join(evalsDir, name), "utf8"), root));
+    await writeFile(join(OUT, "evals", name), tidy(await readFile(join(evalsDir, name), "utf8"), root, claude));
   }
   console.log(`written to ${OUT}`);
 } finally {
