@@ -134,7 +134,7 @@ Designed, specified and reviewed by Harry Freeman; built with AI coding agents.
 - The brief: a tool that makes AI checkable, with strict TypeScript, validation at every boundary and no fake success, built as a clean room on synthetic data and run locally.
 - The second round asked for the morning review laid out like a pull request, and `dreaming why` for any memory's provenance.
 - The third asked for memory you can measure: a task suite run with and without a proposed memory, isolated from his own settings and hooks, and a contradiction check beside every proposal.
-- Each round was reviewed before the next brief. He approved the real-model runs (synthetic repositories only, capped at 30 runs an eval), asked for the focused re-run of `prefer-pnpm`, and chose IBM Plex as the one typeface across his pieces.
+- The approved build record shows the first two rounds accepted, each built on by the next brief. A later pass set every recording in IBM Plex, the one type family across his pieces.
 
 Development, recording and contribution notes are in [docs/development.md](docs/development.md); the visual identity is in [IDENTITY.md](IDENTITY.md).
 
