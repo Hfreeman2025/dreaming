@@ -1,6 +1,6 @@
 # dreaming
 
-<!-- hf-badge -->
+[![Harry Freeman](docs/brand/hf-badge.svg)](https://harryfreeman.dev)
 
 dreaming lets a coding agent propose changes to its own long-term memory, and makes each proposal earn its place before a person approves it. Agents such as Claude Code load plain memory files into every session: written by hand they go stale, and written by the agent unsupervised they collect guesses nobody checked. After you log off, dreaming has a headless agent with read-only tools re-read the day's sessions and propose what memory should learn, correct or forget, citing quotes that dreaming checks against the transcripts. It can then **measure** a proposal, by running a task suite with and without it in isolated agent sessions and reporting the change in pass rate, turns and tokens with honest intervals, and **check** it for contradictions with everything else the agent remembers, using a small language-inference model on your machine. In the morning you review it all like a pull request. Only what you approve is written, with a backup and an audit trail.
 
@@ -140,4 +140,4 @@ Development, recording and contribution notes are in [docs/development.md](docs/
 
 ## Licence
 
-MIT. Copyright (c) 2026 Harry Freeman; see [LICENSE](LICENSE). The IBM Plex fonts in `fonts/` are under the SIL Open Font License 1.1, and every model and library dreaming uses is listed with its licence in [THIRD_PARTY.md](THIRD_PARTY.md).
+MIT. Copyright (c) 2026 Harry Freeman; see [LICENSE](LICENSE). The IBM Plex fonts in `fonts/` are under the SIL Open Font License 1.1, and every model and library dreaming uses is listed with its licence in [THIRD_PARTY.md](THIRD_PARTY.md). The badge in `docs/brand/` is Harry Freeman's mark, not covered by the MIT licence; see [its note](docs/brand/LICENSE.md).
